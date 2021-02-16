@@ -1,0 +1,71 @@
+html, body {
+  
+  line-height:1.5em;
+  font-family: 'Open Sans', sans-serif;
+  font-size:14px;
+  padding:0 50px 200px 50px
+}
+
+a{color:#0075BB;text-decoration:none}
+
+
+.clearer{clear:both}
+.image-left{margin:0 auto; text-align:center; padding-bottom:50px;}
+.image-left img,.image-right img, .image-full img{max-width:110%;}
+.image-right img {height:100%;}
+.image-right{width:50%;margin:0 auto; text-align:center;}
+.image-full{text-align:center;margin:40px 0}
+.caption span{display:block;text-align:center;width:100%;padding:10px 0;font-style:italic}
+.image .toggler{margin:0 0 10px 0;display:block}
+
+h1{margin:150px 0 20px 0;font-size:75px;text-align:center}
+h2{margin:200px 0 50px 0;text-align:center;padding:20px 0 0 0}
+#map{}
+#cordinate{padding:5px;background-color:#CCC;color:#000;position:absolute;z-index:100}
+.content{text-align:left;}
+.image .caption{display:none}
+.image.expanded .caption{display:block}
+
+ul.list{margin:20px 0 0 20px}
+ul.list li{list-style:initial;margin:5px 0 10px 0;line-height:1.5em}
+ol li{list-style:initial;list-style-type:decimal;margin:5px 0 20px 0;line-height:1.5em}
+
+.hidden{display:none}
+
+.authorship{padding:20px 0 0 10px;text-align:center}
+#sidemenu{position:fixed;width:200px;top:20px;box-shadow:1px 1px 1px #999;border:1px solid #CCC;padding:20px 20px 20px 0;background:#F2F2F2;font-size:13px}
+#sidemenu{right:-170px}
+#sidemenu:hover{right:0}
+#sidemenu ul {padding:0 0 0 10px}
+#sidemenu ul li{margin:0 0 5px 0;list-style:none;width:100%;display:block;clear:both}
+#sidemenu ul li.arrow{padding-left:7px}
+#sidemenu ul li span{display:inline-block;width:32px;height:10px;border-radius:999px;background:#CCC;text-align:center;padding:5px 0 17px 0;text-decoration:none;margin: 0 10px 20px 0;float:left;font-weight:bold}
+#sidemenu ul li span.active{background:#C7E44A;}
+
+#guider{position:fixed;bottom:20px;right:20px}
+
+span.button{    padding: 6px 10px 10px 10px;
+    display: inline-block;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #999;
+    font-weight: bold;width:110px}
+	span.button img{float:right;margin:0 0 0 10px}
+	
+div#theme-requirements {
+    border: 1px dashed red;
+    width: 50%;
+    margin: 0 auto;
+	padding:5px;
+}
+
+div#theme-requirements > ul {
+    list-style-type: none;
+}
+
+div#theme-requirements >ul li {
+    text-align:left
+}
+div#theme-requirements a {
+   margin:0 auto;
+}	

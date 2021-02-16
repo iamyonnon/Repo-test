@@ -1,0 +1,17 @@
+ONE CLICK INSTALL ====================
+
+Install plugin madara-unyson-backup-restore.zip and go to MangaBooth > Sample Data
+
+MANUAL IMPORT ========================
+
+1. Go to Tools > Import an choose mangabooth.xml file to import data
+
+2. After installing Option Tree, go to OptionTree > Settings and paste content of theme-options.txt into Import > Theme Options text area
+
+3. Install Widget Settings Import/Export plugin, and go to Tools > Widget Settings Import and choose widget_data.json to import widget settings
+
+4. Install Widget Logic plugin, and go to Appearance > Widgets, choose widget_logic_options.txt to import widget logic settings
+
+5. Create WP-manga folder in /wp-uploads directory and copy json folder into it.
+
+6. If you want to download sample images, download from this file http://demo.mangabooth.com/mangabooth-demo.zip and copy data folder into  WP-manga folder created from above step

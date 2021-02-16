@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Madara - Quick-Start Document</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./quickstart/main.css" media="all">
+	<link rel="stylesheet" href="./quickstart/colorbox/colorbox.css" media="all">
+    <script type="text/javascript" src="./quickstart/jquery.min.js"></script>
+	<script type="text/javascript" src="./quickstart/jquery.unveil.js"></script>
+    <script type="text/javascript" src="./quickstart/jquery.maphilight.js"></script>
+	<script type="text/javascript" src="./quickstart/colorbox/jquery.colorbox-min.js"></script>
+    <script type="text/javascript">$(function() {
+		$(document).ready(function() {
+		  $("img").unveil();
+		});
+		
+        $('.map').maphilight();
+		
+		$('.area').on('click',function(){
+			html = $($(this).attr('data-html')).html();
+			$.colorbox({html:html});
+		});
+		
+		$('.toggler').on('click',function(){
+			$(this).parent().toggleClass('expanded');
+		})
+		
+		h2s = $('h2');
+		items = $('#sidemenu li:not(.arrow)');
+		$(window).on('scroll',function(){
+			
+			for(var idx = 0; idx < h2s.length; idx++){
+				h2 = h2s[idx];	
+				var offset =  $(h2).offset();
+				if($(window).scrollTop() < offset.top - 300){
+					break;
+				}
+			}
+			$('span',items).removeClass('active');
+			$('span',$(items[(idx == 0 ? 0 : (idx - 1))])).addClass('active');
+		})
+		
+		$(document).keydown(function(e) {
+			switch(e.which) {
+				case 33: // PageUp
+					idx = $('#sidemenu li:not(.arrow) .active').text();
+					if(idx > 1) {
+						idx--;
+						location.href =  $('#sidemenu li:not(.arrow):eq('+(idx-1)+') a').attr('href');
+					} else {
+						location.href = '#';
+					}
+				break;
+					
+				case 34: // PageDown
+					if(location.hash == '' || location.hash == '#'){
+						location.href = '#step1';
+					} else {
+						idx = $('#sidemenu li:not(.arrow) .active').text();
+						if(idx < $('#sidemenu li:not(.arrow)').length) idx++;
+						location.href =  $('#sidemenu li:not(.arrow):eq('+(idx-1)+') a').attr('href');
+					}
+				break;
+
+				default: return; // exit this handler for other keys
+			}
+			e.preventDefault(); // prevent the default action (scroll / move caret)
+		});
+    });</script>
+</head>
+<body style="zoom: 1;">
+<h1>Madara - Quick-Start</h1>
+<div class="authorship">
+<br/><img src="quickstart/images/theme-preview.png" style="border-radius:10px;"/>
+<p>Author: <a href="http://themeforest.net/user/wpstylish" target="_blank">WP Stylish</a></p>
+<p>URL: <a href="#" target="_blank">ThemeForest</a></p>
+<div id="theme-requirements">
+<ul>
+<li><b>To use Madara theme, please make sure you are running WordPress 4.7 or higher, PHP5.6 or higher, and MySQL 5 or higher</b></p>
+</li>
+<li><b>Minimum value of PHP limits are as below:</b><br><br>
+&deg; max_execution_time: 300<br>
+&deg; post_max_size: 64M<br>
+&deg; upload_max_filesize: 64M
+</li>
+</ul>
+<a href="http://demo.mangabooth.com/doc/docs/general/requirement-for-manga-stream/" target="blank">See more</a>
+</div>
+</div>
+<div class="content">
+<h2 id="step1">1. Install all recommended plugins</h2>
+<p>Unless you are familiar with WordPress and our themes, it is recommended to install ALL required plugins including the suggested list which appears in admin panel and built-in plugins in the package (unzip the .zip package and find in <b>/Installation Files/</b> folder)</p>
+<div class="row">
+<div class="image-left">
+	<div class="caption">
+		<img src="./quickstart/loading.gif" data-src="./quickstart/images/install plugin2.png" alt=""/>
+		<span>When first installed, you will see this suggested list in admin. Click on the links to install and activate them. Other plugins can be found in the <b>"Theme package\Installation Files\Plugins"</b> as below</span>
+	</div>
+</div>
+<div class="image-right">
+	<div class="caption">
+		<img src="./quickstart/loading.gif" data-src="./quickstart/images/all plugin2.png" alt="" height="167px"/>
+		<span>It is recommended to install all built-in plugins in the package. Go to <b>Plugins > Add New > Uploads </b>  to install and activate them.</span>
+	</div>
+</div>
+<div class="clearer"><!-- --></div>
+</div>
+
+<h2 id="step2">2. Install for the First Time</h2>
+
+<p>When first installed, you will look this theme like images below:</p>
+<br/><br/>
+<center>
+<div class="map" style="display: block; position: relative; padding: 0px; width: 420px; height: 300px; "><canvas style="width: 420px; height: 300px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" width="420" height="300"></canvas><canvas style="width: 420px; height: 300px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px; opacity: 1;" height="300" width="420"></canvas><img id="overlaymap" src="./quickstart/images/first3.png" class="map maphilighted" usemap="#short" style="position: absolute; left: 0; top: 0; padding: 0px; border: 0px;opacity: 0; ">
+</div>
+</center>
+<map name="short">
+	<area href="javascript:void(0)" class="area" data-html="#logo-html" shape="rect" coords="281,62,501,99" alt="Link" title="Logo">
+	<area href="javascript:void(0)" class="area" data-html="#primarymenu-html" shape="rect" coords="554,69,604,97" alt="Link" title="Primary Menu">
+	<area href="javascript:void(0)" class="area" data-html="#mainbody-html" shape="rect" coords="0,135,1041,810" alt="Link" title="Main Body">
+	<area href="javascript:void(0)" class="area" data-html="#rightsidebar1-html" shape="rect" coords="1042,135,1312,810" alt="Link" title="Right Sidebar">
+	<area href="javascript:void(0)" class="area" data-html="#copyrighttext-html" shape="rect" coords="677,861,921,885" alt="Link" title="Copyright Text">
+	<area href="javascript:void(0)" class="area" data-html="#search-html" shape="rect" coords="1156,65,1191,99" alt="Link" title="Search">
+</map>
+<p>Madara-Core plugin is the main plugin of the theme and which is used to upload & manage mangas</p>
+<ul>
+<li>Before using this plugin, please go to <b>Dashboard > MANGA > Manga Welcome </b> and take a look at the plugin configuration:  <a href="http://demo.mangabooth.com/doc//docs/manga-plugin/manga-welcome/" target="_blank" title="link" rel="follow, index">http://demo.mangabooth.com/doc//docs/manga-plugin/manga-welcome/</a>
+</li>
+</ul>
+
+
+
+
+<h2 id="step3">3. Start Configuring (Theme Options)</h2>
+
+<p><a href="http://demo.mangabooth.com/doc//docs/theme-settings/theme-options/" target="blank"><b>Appearance > Theme Options</b></a> is where you do global settings including layout, font, color and other settings. Settings are organized in different tabs which affect different pages. For example, <b>General</b> tab contains site-wide settings while <b>Archives</b> tab contains settings for archives pages only (i.e. blog, category, tag, author, search pages)</p>
+
+<div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/theme options.png" alt=""/>
+		<span><a href="http://demo.mangabooth.com/doc//docs/theme-settings/theme-options/" target"blank"><b>Theme Options</b></a> is where you do all the global configuration.</span>
+	</div>
+</div>
+
+
+
+<h2 id="step4">4. Learn Full Layout Map</h2>
+<p>Below is the layout map of a Front Page when it is fully configured. This is really important for further steps, so click on each box to learn about it. Come back here if you have trouble understanding the layout </p><br/><br/>
+<div id="map" style="position:relative">
+<img id="imagemap" src="./quickstart/layout02.png" style="position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;">
+<div class="map" style="display: block; position: relative; padding: 0px; width: 420px; height: 300px; "><canvas style="width: 420px; height: 300px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" width="420" height="300"></canvas><canvas style="width: 420px; height: 300px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px; opacity: 1;" height="300" width="420"></canvas><img id="overlaymap" src="./quickstart/layout01.png" class="map maphilighted" usemap="#simple" style="position: absolute; left: 0; top: 0; padding: 0px; border: 0px;opacity: 0; ">
+</div>
+</div>
+<map name="simple">
+	<area href="javascript:void(0)" class="area" data-html="#secondmenu-html" shape="rect" coords="53,247,221,306" alt="Link" title="Second Menu">
+	<area href="javascript:void(0)" class="area" data-html="#maintopsidebar-html" shape="rect" coords="21,419,222,481" alt="Link" title="Maintop Sidebar">
+    <area href="javascript:void(0)" class="area" data-html="#logo-html" shape="rect" coords="309,52,413,113" alt="Link" title="Logo">
+    <area href="javascript:void(0)" class="area" data-html="#primarymenu-html" shape="rect" coords="663,52,835,113" alt="Link" title="Primary Menu">
+    
+    <area href="javascript:void(0)" class="area" data-html="#userinfor-html" shape="rect" coords="1268,245,1410,306" alt="Link" title="User Info Area">
+    <area href="javascript:void(0)" class="area" data-html="#search-html" shape="rect" coords="954,52,1176,113" alt="Link" title="Search">
+    <area href="javascript:void(0)" class="area" data-html="#rightsidebar2-html" shape="rect" coords="1266,1160,1440,1220" alt="Link" title="Right Sidebar">
+    <area href="javascript:void(0)" class="area" data-html="#mainbody-html" shape="rect" coords="78,1160,222,1222" alt="Link" title="Main Body">
+    <area href="javascript:void(0)" class="area" data-html="#mainbottomsidebar-html" shape="rect" coords="24,1746,224,1824" alt="Link" title="Main Bottom Sidebar">
+   
+    <area href="javascript:void(0)" class="area" data-html="#copyrighttext-html" shape="rect" coords="758,2130,948,2192" alt="Link" title="Copyright Text">
+    <area href="javascript:void(0)" class="area" data-html="#footermenu-html" shape="rect" coords="395,2130,566,2192" alt="Link" title="Footer Menu">
+	<area href="javascript:void(0)" class="area" data-html="#maintopsecondsidebar-html" shape="rect" coords="23,637,221,715" alt="Link" title="Main Top Second Sidebar">
+</map>
+
+<div id="content" class="content hidden">
+<div id="secondmenu-html">
+	<h3>Second Menu</h3>
+	<p>To change this section, go to <b>Appearance > Widgets</b> and drag widgets in/out of <b>Second Menu</b>.</p>
+	<div class="image-full">
+		<div class="caption">
+			<img src="./quickstart/images/secondmenu.png" " alt=""/>
+			<span>Edit <b>Second Menu</b></span>
+		</div>
+	</div>	
+</div>
+
+<div id="maintopsidebar-html">
+	<h3>Maintop Sidebar</h3>
+	<p>To change this section, go to <b>Appearance > Widgets</b> and drag widgets in/out of <b>Maintop Sidebar</b>.</p>
+	<p>In this example, we use <a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/wp-manga-manga-hero-slider/" target="blanl">WP Manga: Manga Hero Slider</a> widget with style <b>2</b>. </p>
+</div>
+
+<div id="maintopsecondsidebar-html">
+	<h3>Main Top Second Sidebar</h3>
+	<p>To change this section, go to <b>Appearance > Widgets</b> and drag widgets in/out of <b>Main Top Second Sidebar</b>.</p>
+	<p>In this example, we use <a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/wp-manga-manga-popular-slider/" target="blanl">WP Manga: Manga Popular Slider</a> widget with style <b>1</b>.</p>
+</div>
+
+<div id="mainbottomsidebar-html">
+	<h3>Main Bottom Sidebar</h3>
+	<p>To change this section, go to <b>Appearance > Widgets</b> and drag widgets in/out of <b>Main Bottom Sidebar</b>.</p>
+	<p>In this example, we use <a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/wp-manga-manga-hero-slider/" target="blanl">WP Manga: Manga Hero Slider</a> widget with style <b>2</b>.
+</div>
+<div id="userinfor-html">
+	<h3>User Info Area</h3>
+	<p>To change User's Information, Click on <b>Hovel of Profile picture > User Setting</b></p>
+	<div class="image-full">
+		<div class="caption">
+			<img src="./quickstart/images/user1.png"  alt=""/>
+			<span>Edit <b> Userinfor</b></span>
+		</div>
+	</div>
+	
+</div>
+
+
+<div id="logo-html">
+	<h3>Logo</h3>
+	<p>To change logo, go to <b>Appearance > Theme Options > General</b> and upload your own logo</p>
+		
+</div>
+
+<div id="primarymenu-html">
+	<h3>Primary Menu</h3>
+	<p>To change this menu, go to <b>Appearance > Menus</b> and edit menu at <b>Primary Menu</b> location</p>
+	
+	<div class="image-full">
+		<div class="caption">
+			<img src="./quickstart/images/Menu Setting.png"  alt=""/>
+			<span>Edit <b>Primary Menu</b></span>
+		</div>
+	</div>	
+</div>
+
+<div id="search-html">
+	<h3>Search</h3>
+	<p>To set Color and background this button, go to <b>Appearance > Theme Options > Search Header Background </b>. Custom Search Box can be set in <b>Appearance > Widgets > Search Box Sidebar</b></p>
+</div>
+
+<div id="rightsidebar1-html">
+	<h3>Right Sidebar</h3>
+	<p>To change this content, go to <b>Appearance > Widgets</b> and drag a widget in/out <b>Right Sidebar</b>.</p>
+</div>
+
+<div id="rightsidebar2-html">
+	<h3>Right Sidebar</h3>
+	<p>To change this content, go to <b>Appearance > Widgets</b> and drag a widget in/out <b>Right Sidebar</b>.</p>
+	<div class="image-full">
+		<div class="caption">
+			<img src="./quickstart/images/rightsidebar.png" width="450px" alt=""/>
+			<span>Edit <b>Right Sidebar</b></span>
+		</div>
+	</div>
+	<p>In this example, We use:
+		<ul>
+			<li><a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/wp-manga-manga-history/" target="blank">WP Manga: Manga History </a> </li> 
+			<li> <b>Image Widget </b></li>
+			<li> <a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/mangastream-posts/" target="blank">WP Manga: Manga Posts </a> </li>
+		</ul>
+	<p>In each post, page or category, you can also find an option to change sidebar position</p>
+</div>
+
+<div id="mainbody-html">
+	<h3>Main Body</h3>
+	<p>Main content appears here. You can change main body content: </p>
+	<div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/images/mainbody.png" alt=""/>
+		<span><b>Settings > Reading</b> to configure static Front Page.</span>
+	</div>
+     </div>
+</div>
+
+<div id="copyrighttext-html">
+	<h3>Copyright Text</h3>
+	<p>To change this text, go to <b>Appearance > Theme Options > Misc > Copyright Text</b></p>
+</div>
+
+<div id="footermenu-html">
+	<h3>Footer Menu</h3>
+	<p>To change this menu, go to <b>Appearance > Menus</b> and edit menu at <b>Footer Menu</b> location</p>
+</div>
+</div>
+
+<h2 id="step5">5. Manage Manga</h2>
+<p> To create a new Manga, please go to <b> Manga > Add New  </b>. You can upload <b> single chapter or multi chapter in this manga  here </b> </p>
+<b> 5.1. Upload Single  Chapter Manga </b>
+<p> There are 4 steps:</p>
+<ul>
+  <li>Step 1: Enter information such as <b> Title, Summary and Select Featured Image. </b>  
+  <div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/titlemanga.png" alt=""/>
+		
+	</div>
+  </li>
+  <li>Step 2: Enter information of<b> Manga Extra Info. </b>  
+  <div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/manga1.png" alt=""/>
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/manga2.png" alt=""/>
+		
+	</div>
+  </li>
+  
+  <li>Step 3: Go to > <b>Chapter Upload Tab</b>. After,  You create <b>New Volume >>  Enter title Chapter Name  and Name Extend ( Note: you can enter or don't enter title of Name Extend) 
+  >> Choose where to upload such as local,imgur, blogspot, amazone s3 ( If you select upload to imgur, blogspot, amazone s3, then you consult link below <a href="http://demo.mangabooth.com/doc//docs/features/3-manga-storages/"> Manga storages</a>  >> Choose file and Upload Chapter</b>
+  </li>
+  <div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/chap1.png" alt=""/>
+		
+	</div>
+</div>
+  <li>Step 4:  Hit  <b>" Publish" </b>
+	<br />
+	</li>
+</ul>
+
+<b> 5.2. Upload Multi  Chapter Manga </b>
+<p> There are 4 steps:</p>
+<ul>
+  <li> Repeat  Step 1  and  Step 2  in <b> Upload single Chapter Manga </b>
+  
+  </li>
+ 
+  <li>Step 3: Go to > <b>Manga Upload Tab</b>. After, Choose Storage such as local,imgur, blogspot, amazone s3 ( If you select upload to imgur, blogspot, amazone s3, then you consult link below <a href="http://demo.mangabooth.com/doc//docs/features/3-manga-storages/"> Manga storages</a>  >> Choose file and Upload Manga</b>
+  </li>
+  <div class="image-full">
+	<div class="caption">
+		<img  src="./quickstart/loading.gif" data-src="./quickstart/images/listchap.png" alt=""/>
+		
+	</div>
+</div>
+  <li>Step 4:  Hit  <b>" Publish" </b>
+	
+	</li>
+</ul>
+
+
+<div class="clearer"><!-- --></div>
+
+
+<h2 id="step6">6. Create More Complex Front Page</h2>
+
+<p>Time to move on! Make sure you have done <b>Step 5.</b> as we will continue from there. Edit <b>Home</b> page and start doing configuration</p>
+<ol class="list">
+	<li>Choose <b>Front Page</b> template for this page. (It is not required, but you will have more settings for the Front Page)<br/>
+	<div class="image-full">
+		<div class="caption">
+			<img  src="./quickstart/loading.gif" data-src="./quickstart/images/choose-front-page.jpg" alt=""/>
+			<span>Choose <b>Front Page</b> template to enable extra settings</span>
+		</div>
+	</div>
+	<div class="clearer"><!-- --></div>
+	</li>
+	<li><b>Front Page Settings</b> box will appear under the content editor. Use these boxes to configure the Front Page.<br/>
+	
+	<div class="image-full">
+		<div class="caption">
+			<img  src="./quickstart/loading.gif" data-src="./quickstart/images/page setting.png" alt=""/>
+		</div>
+	</div>
+	
+	</li>
+	<li><b>Use Widget</b> to build your page sidebar content (go to > Appearance > Widgets.). Widget helps you use create better user interface. Here are the list of <a href="http://demo.mangabooth.com/doc//docs/theme-settings/widgets-sidebars/widgets/" target="blank"><b>available Widgets</b></a>.
+	<div class="image-full">
+		<div class="caption">
+			<img  src="./quickstart/loading.gif" data-src="./quickstart/images/widgets2.png" alt=""/>
+		</div>
+	</div>
+	</li>
+	<li>Now refer back to <b>Step 4.</b>, you can configure position the sidebars by moving to <b> Sidebar Setting Tab </b>
+		<ul class="list">
+			
+					<div class="image-full">
+						<div class="caption">
+							<img  src="./quickstart/loading.gif" data-src="./quickstart/images/sidebarsetting.png" alt=""/> 
+							
+						</div>
+					
+					</div>
+					<div class="clearer"><!-- --></div>
+			
+		</ul>
+	<li>Now check back Front Page, does it look like our demo page? Try to change the settings, you will see (almost) unlimited number of combinations for your Front Page. Happy configuring!</li>
+</ol>
+
+
+<h2 id="step7">7. FAQs</h2>
+<p><b>Q1</b>: How to Install Theme.</p>
+<p><b>A1</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/installation/install-theme/" target=""> <b> Install Theme</b></a></p>
+<br/>
+<p><b>Q2</b>: How to Install Manga Plugin </p>
+<p><b>A2</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/manga-plugin/install-manga-plugin/" target=""><b>Install Manga Plugin</b></a></p>
+<br/>
+<p><b>Q3</b>: How to use Manga Plugin </p>
+<p><b>A3</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/manga-plugin/" target=""><b>Use Manga Plugin</b></a></p>
+<br/>
+<p><b>Q4</b>: How to install Plugins </p>
+<p><b>A4</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/installation/install-plugins/" target=""><b>Install Plugins</b></a></p>
+<br/>
+<p><b>Q5</b>: How to import sample data </p>
+<p><b>A5</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/installation/import-sample-data/" target=""><b>Import Sample Data</b></a></p>
+<br/>
+<p><b>Q6</b>: Where can I Configure  a page </p>
+<p><b>A6</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/page-settings/" target=""><b>Page Settings</b></a></p>
+<br/>
+<p><b>Q7</b>: How to use Shortcodes</p>
+<p><b>A7</b>: Please refer to this guide: <a href="http://demo.mangabooth.com/doc//docs/shortcodes/how-to-use-shortcodes/" target=""><b>Use Shortcodes</b></a></p>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<div id="sidemenu" class="out">
+	<ul>
+		<li><span class="active">1</span><a href="#step1">Install all recommended plugins</a></li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>2</span><a href="#step2">Install for the first time</a> </li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>3</span><a href="#step3">Start configuring<br/>(Theme Options)</a></li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>4</span><a href="#step4">Learn Full Layout Map</a></li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>5</span><a href="#step5">Manage Manga</a></li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>6</span><a href="#step6">Configure Complex Front Page</a></li>
+		<li class="arrow"><img src="./quickstart/Black_Down_Arrow.png" height="20px"/></li>
+		<li><span>7</span><a href="#step7">FAQs</a></li>
+	</ul>
+</div>
+
+
+<div id="guider">
+	<p><b>Use the keyboard ;)</p>
+	<p><span class="button">Page Up <img src="./quickstart/Black_Down_Arrow.png" height="20px" style="-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg); transform: rotate(180deg);"/></span></p>
+	<p><span class="button">Page Down <img src="./quickstart/Black_Down_Arrow.png" height="20px"/></span></p>
+<div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52179345-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body></html>
